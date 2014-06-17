@@ -11,7 +11,7 @@ import requests
 
 TEMPLATE_DIR = Path(__file__).ancestor(1).child("templates")
 
-SERVER_URL = 'http://127.0.0.1:5001'
+SERVER_URL = os.environ.get('SERVER_URL', 'http://127.0.0.1:5001')
 TARGET_API = SERVER_URL + '/api/targets/{0}'
 USERS_API = SERVER_URL + '/api/users/'
 USER_API = SERVER_URL + '/api/users/{0}'

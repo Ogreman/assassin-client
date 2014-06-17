@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+   <div>
+    {% from "helpers.html" import render_field %}
+    {% if form.target.choices %}
+    <form method="POST" action="{{ url_for('game') }}">
+    {{ form.hidden_tag() }}
+      <dl>
+        {{ render_field(form.target) }}
+      </dl>
+      {% if session.get('pot', False) %}
+        <p><input id="assassin" type="submit" disabled value="You have the pot!"></p>
+      {% else %}
+        <p><input id="assassin" type="submit" value="Assassinate"></p>
+      {% endif %}
+    </form>
+    </div>
+    {% endif %}
+{% endblock %}

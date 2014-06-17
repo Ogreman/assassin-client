@@ -1,18 +1,30 @@
 <html>
+
 <title>Assassin</title>
-<h1>Assassin</h1>
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+  window.jQuery || document.write('<script src="{{ url_for('static', filename='jquery-1.11.0.min.js') }}">\x3C/script>');
+  var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
 {% with messages = get_flashed_messages() %}
   {% if messages %}
-    <ul class=flashes>
+    <ul class="flashes" style="position:absolute; top:5; right: 5;">
     {% for message in messages %}
       <li>{{ message }}</li>
     {% endfor %}
     </ul>
   {% endif %}
 {% endwith %}
+
 {% block body %}{% endblock %}
+
 {% if session['player_id'] %}
-    <p>Current score: {{ session['score'] }}</p>
-    <a href="{{ url_for('logout') }}">Logout</a>
+<p style="position:absolute; bottom:5; right:5;">
+    <b>Score: {{ session['score'] }}</b> | <a href="{{ url_for('logout') }}">Logout</a>
+</p>
 {% endif %}
+
 </html>

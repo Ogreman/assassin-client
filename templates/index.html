@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 {% block body %}
+<h1 id="exists" style="
+    position: fixed;
+    top: 40%;
+    left: 25%;
+    font-size: 63px;
+">
    <div>
     {% from "helpers.html" import render_field %}
     <form method="POST" action="{{ url_for('index') }}">
@@ -10,4 +16,5 @@
       <p><input type="submit" value="Register"></p>
     </form>
     </div>
+    </h1>
 {% endblock %}

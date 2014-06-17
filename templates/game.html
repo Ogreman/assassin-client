@@ -1,11 +1,17 @@
 {% extends "layout.html" %}
 {% block body %}
+<h1 id="exists" style="
+    position: fixed;
+    top: 40%;
+    left: 25%;
+    font-size: 63px;
+">
    <div>
     {% from "helpers.html" import render_field %}
     {% if form.target.choices %}
     <form method="POST" action="{{ url_for('game') }}">
     {{ form.hidden_tag() }}
-      <dl>
+      <dl >
         {{ render_field(form.target) }}
       </dl>
       {% if session.get('pot', False) %}
@@ -16,4 +22,8 @@
     </form>
     </div>
     {% endif %}
+    {% if session.get('pot', False) %}
+    <p>You have the pot!</p>
+    {% endif %}
+    </h1>
 {% endblock %}

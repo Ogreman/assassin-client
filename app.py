@@ -6,10 +6,8 @@ from flask_wtf import Form
 from wtforms import TextField, SelectField, validators
 from unipath import Path
 
-import envvars
 import requests
 
-envvars.load()
 
 TEMPLATE_DIR = Path(__file__).ancestor(1).child("templates")
 
@@ -21,7 +19,7 @@ ATTACK_API = SERVER_URL + '/api/hit/'
 
 
 app = Flask(__name__, template_folder=TEMPLATE_DIR)
-app.secret_key = envvars.get('SECRET_KEY')
+app.secret_key = os.environ.get('SECRET_KEY', 'something-secret-this-way-comes')
 
 
 class PlayerForm(Form):

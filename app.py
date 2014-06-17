@@ -89,6 +89,8 @@ def game():
                 ]
             except KeyError:
                 flash('Unexpected response')
+        elif response.status_code == 503:
+            flash('Game not started')
         else:
             flash('Failed to get targets')
     return render_template("game.html", form=form)
